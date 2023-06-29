@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>WebBlend Studios</title>
-  <meta property="og:title" content="Planical modern template" />
+  <title> WebBlend Studios</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <meta property="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="public/Branding/icon.png" type="images" />
 
   <style data-tag="reset-style-sheet">
     html {
@@ -99,6 +99,8 @@
     html {
       scroll-behavior: smooth
     }
+
+    /* contact */
   </style>
   <style data-tag="default-style-sheet">
     html {
@@ -128,22 +130,52 @@
 </head>
 
 <body>
+
   <div>
+
     <script type="text/javascript" src="https://unpkg.com/dangerous-html/dist/default/lib.umd.js"></script>
     <link href="./home.css" rel="stylesheet" />
 
+    <div class="banner">
+      <p class="banner-offer"><b>Grand Opening Promo: </b>Get 30% off your first order!</p>
+    </div>
+    <style>
+      .banner {
+        background-color: #3e75f7;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .banner-text {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .banner-offer {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+s
+      .banner-button:hover {
+        background-color: #f5f5f5;
+      }
+    </style>
+
     <div class="home-container">
+
       <nav class="navbar-navbar navbar-root-class-name">
         <img alt="Planical7012" src="public/Branding/icon.png" class="navbar-branding-logo" width="70px" />
         <div class="navbar-nav-content">
           <div class="navbar-nav-links">
-            <span class="navbar-link nav-link">Features</span>
-            <span class="nav-link">Why us</span>
-            <span class="nav-link">Prices</span>
-            <span class="nav-link">Contact</span>
+            <span class="navbar-link nav-link"><a href="#features">Features</a></span>
+            <span class="nav-link"><a href="#why">Why us</a></span>
+            <span class="nav-link"><a href="#pricing">Prices</a></span>
+            <span class="nav-link"><a href="#contact">Contact</a></span>
           </div>
           <div class="get-started navbar-get-started">
-            <span class="navbar-text">Get started</span>
+            <span class="navbar-text"><a href="https://calendly.com/webblendstudios/consultation" target="_blank">Get
+                started</a></span>
           </div>
           <div id="open-mobile-menu" class="navbar-hamburger get-started">
             <img alt="image" src="public/Icons/hamburger-200h.png" class="navbar-image" />
@@ -161,13 +193,14 @@
             </div>
           </div>
           <div class="navbar-nav-links1">
-            <span class="nav-link">Features</span>
-            <span class="nav-link">Why us</span>
-            <span class="nav-link">Prices</span>
-            <span class="nav-link">Contact</span>
+            <span class="navbar-link nav-link"><a href="#features">Features</a></span>
+            <span class="nav-link"><a href="#why">Why us</a></span>
+            <span class="nav-link"><a href="#pricing">Prices</a></span>
+            <span class="nav-link"><a href="#contact">Contact</a></span>
           </div>
           <div class="get-started">
-            <span class="navbar-text1">Get started</span>
+            <span class="navbar-text1"><a href="https://calendly.com/webblendstudios/consultation" target="_blank">Get
+                started</a></span>
           </div>
         </div>
         <div>
@@ -232,10 +265,11 @@ listenForUrlChangesMobileMenu()
               </header>
               <div class="home-buttons">
                 <div class="home-get-started button">
-                  <span class="home-text">Book a Demo</span>
+                  <span class="home-text"><a href="https://calendly.com/webblendstudios/consultation"
+                      target="_blank">Book a Demo</a></span>
                 </div>
                 <div class="home-get-started1 button">
-                  <span class="home-text01">View Pricing</span>
+                  <span class="home-text01"><a href="#pricing">View Pricing</a></span>
                 </div>
               </div>
             </main>
@@ -264,7 +298,7 @@ listenForUrlChangesMobileMenu()
           </div>
         </div>
       </section>
-      <section class="home-section01">
+      <section class="home-section01" id="why">
         <!-- <h2 class="home-text02">
           Our web developers are here, 24/7.
         </h2>
@@ -348,9 +382,9 @@ listenForUrlChangesMobileMenu()
             </div>
           </div>
         </section> -->
-        <section class="home-note2">
+        <section class="home-note2" id="features">
           <div class="home-image11">
-            <img alt="image" src="public/SectionImages/group%201449-1200w.png" width="550px" class="home-image12" />
+            <img alt="image" src="public/SectionImages/group%201449-1200w.png" width="600px" class="home-image12" />
           </div>
           <div class="home-content3">
             <main class="home-main3">
@@ -366,8 +400,7 @@ listenForUrlChangesMobileMenu()
                   </h2>
                   <p class="section-description">
                     When you choose WebBlend Studios, you're choosing a team of experienced professionals who are
-                    committed to delivering exceptional websites tailored to your unique needs. Let us help you unlock
-                    your digital potential and achieve your online goals.
+                    committed to delivering exceptional websites tailored to your unique needs.
                   </p>
                 </header>
                 <div class="home-checkmarks">
@@ -398,7 +431,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>Domain & Hosting</span>
+                      <span>FREE Basic SEO Optimization & Guide</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -408,7 +441,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>Premium Design</span>
+                      <span>FREE Facebook / Instagram Marketing Tutorial</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -418,7 +451,57 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>Tailored to your brand</span>
+                      <span>FREE Domain & Hosting (1 year)</span>
+                    </p>
+                  </div>
+                  <div class="mark-mark">
+                    <div class="mark-icon">
+                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
+                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
+                      </svg>
+                    </div>
+                    <p class="mark-label">
+                      <span>FREE Graphic Design Service</span>
+                    </p>
+                  </div>
+                  <div class="mark-mark">
+                    <div class="mark-icon">
+                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
+                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
+                      </svg>
+                    </div>
+                    <p class="mark-label">
+                      <span>FREE 100pcs Business Calling Card</span>
+                    </p>
+                  </div>
+                  <div class="mark-mark">
+                    <div class="mark-icon">
+                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
+                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
+                      </svg>
+                    </div>
+                    <p class="mark-label">
+                      <span>Premium & Responsive Design</span>
+                    </p>
+                  </div>
+                  <div class="mark-mark">
+                    <div class="mark-icon">
+                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
+                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
+                      </svg>
+                    </div>
+                    <p class="mark-label">
+                      <span>Tailored To Your Brand</span>
+                    </p>
+                  </div>
+                  <div class="mark-mark">
+                    <div class="mark-icon">
+                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
+                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
+                      </svg>
+                    </div>
+                    <p class="mark-label">
+                      <span>Lowest Renewal Fee</span>
                     </p>
                   </div>
                 </div>
@@ -576,15 +659,13 @@ listenForUrlChangesMobileMenu()
           </div>
           <div class="home-buttons1">
             <div class="home-get-started4 button">
-              <span class="home-text22">Get started</span>
-            </div>
-            <div class="home-book-demo button">
-              <span class="home-text23">Book a demo</span>
+              <span class="home-text22"><a href="https://calendly.com/webblendstudios/consultation" target="_blank">Book
+                  a Demo</a></span>
             </div>
           </div>
         </main>
       </section>
-      <section class="home-section10">
+      <section id="pricing" class="home-section10">
         <div class="home-cube1">
           <div class="home-top1 side"></div>
           <div class="home-front1 side"></div>
@@ -606,13 +687,13 @@ listenForUrlChangesMobileMenu()
           </header>
           <div class="home-plans-container">
             <!-- <div class="home-switch">
-              <div class="switch">
-                <label class="home-text24">Monthly</label>
-              </div>
-              <div class="home-switch2 switch">
-                <label class="home-text25">Yearly</label>
-              </div>
-            </div> -->
+                <div class="switch">
+                  <label class="home-text24">Monthly</label>
+                </div>
+                <div class="home-switch2 switch">
+                  <label class="home-text25">Yearly</label>
+                </div>
+              </div> -->
             <main class="home-plans">
               <div class="home-plan">
                 <div class="home-details">
@@ -624,8 +705,10 @@ listenForUrlChangesMobileMenu()
                     </div>
                   </div>
                   <p class="home-description1">
-                    Create a captivating online presence with our Static Website package. Delivering a fully functional
-                    website with a stunning design, easy navigation, and responsive layout. Perfect for showcasing your
+                    Create a captivating online presence with our Static Website package. Delivering a fully
+                    functional
+                    website with a stunning design, easy navigation, and responsive layout. Perfect for showcasing
+                    your
                     business or personal portfolio.
                   </p>
                 </div>
@@ -645,11 +728,11 @@ listenForUrlChangesMobileMenu()
                 </div>
                 <div class="home-buy-details1">
                   <!-- <div class="home-buy1 button">
-                    <span class="home-text29">
-                      <span>Start Professional</span>
-                      <br />
-                    </span>
-                  </div> -->
+                      <span class="home-text29">
+                        <span>Start Professional</span>
+                        <br />
+                      </span>
+                    </div> -->
                 </div>
               </div>
               <div class="home-plan2">
@@ -667,11 +750,11 @@ listenForUrlChangesMobileMenu()
                 </div>
                 <div class="home-buy-details2">
                   <!-- <div class="home-buy2 button">
-                    <span class="home-text32">
-                      <span>Start Enterprise</span>
-                      <br />
-                    </span>
-                  </div> -->
+                      <span class="home-text32">
+                        <span>Start Enterprise</span>
+                        <br />
+                      </span>
+                    </div> -->
                 </div>
               </div>
             </main>
@@ -1003,26 +1086,28 @@ listenForUrlChangesMobileMenu()
               </span>
             </section>
           </main>
-          <main class="home-contact">
-            <h1 class="home-heading18">Contact Us</h1>
-            <br>
-            <div class="home-box">
-              <input type="text" placeholder="Name" class="home-textinput input" id="name" />
-            </div>
-            <div class="home-box">
-              <input type="email" placeholder="Email" class="home-textinput input" id="email" />
-            </div>
-            <div class="home-box">
-              <textarea placeholder="Message" rows="100" class="home-textinput input textarea" id="message"></textarea>
-            </div>
+          <section id="contact">
+            <main class="home-contact">
+              <h1 class="home-heading18">Contact Us</h1>
+              <br>
+              <div class="home-box">
+                <input type="text" placeholder="Name" class="home-textinput input" id="name" />
+              </div>
+              <div class="home-box">
+                <input type="email" placeholder="Email" class="home-textinput input" id="email" />
+              </div>
+              <div class="home-box">
+                <textarea placeholder="Message" class="home-textinput input textarea" id="message"></textarea>
+              </div>
 
-            <div class="home-box">
-              <button class="home-buy3 send-button" onclick="sendForm()">Send</button>
-            </div>
-            <p class="home-notice">
-              By contacting us, you agree to our Privacy Policy.
-            </p>
-          </main>
+              <div class="home-box">
+                <button class="home-buy3 send-button" onclick="sendForm()">Send</button>
+              </div>
+              <p class="home-notice">
+                By contacting us, you agree to our Privacy Policy.
+              </p>
+            </main>
+          </section>
           <style>
             .home-box input {
               padding: 15px;
@@ -1062,11 +1147,6 @@ listenForUrlChangesMobileMenu()
               color: #999;
             }
           </style>
-
-
-
-
-
           <section class="home-copyright1">
             <span class="home-text61">
               © 2022 latitude. All Rights Reserved.
