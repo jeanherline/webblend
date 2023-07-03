@@ -1,8 +1,198 @@
+<?php
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+if (isset($_POST['submit'])) {
+  $name = isset($_POST['name']) ? $_POST['name'] : '';
+  $email = isset($_POST['email']) ? $_POST['email'] : '';
+  $message = isset($_POST['message']) ? $_POST['message'] : '';
+
+  $mail = new PHPMailer(true);
+
+  $mail->SMTPDebug = 0;
+  $mail->isSMTP();
+  $mail->Host = 'smtp.gmail.com';
+  $mail->SMTPAuth = true;
+  $mail->Username = 'webblendsolutions@gmail.com';
+  $mail->Password = 'euyscjbkznlnytos';
+  $mail->SMTPSecure = 'tls';
+  $mail->Port = 587;
+
+  $mail->setFrom('webblendsolutions@gmail.com', 'WebBlend Global Solutions');
+  $mail->addAddress($email, $name);
+  $mail->addCustomHeader('X-Priority', '1');
+  $mail->addCustomHeader('Importance', 'High');
+  $mail->isHTML(true);
+  $mail->Subject = 'Thank you for contacting us!';
+  $mail->Body = "
+                    <html>
+                        <head>
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    font-size: 16px;
+                                    line-height: 1.5;
+                                    color: #333;
+                                    background-color: #f7f7f7;
+                                }
+                                h1 {
+                                    font-size: 24px;
+                                    color: #444;
+                                    margin-bottom: 20px;
+                                }
+                                p {
+                                    margin-bottom: 15px;
+                                }
+                                ul {
+                                    list-style-type: none;
+                                    padding: 0;
+                                    margin-bottom: 15px;
+                                }
+                                li {
+                                    margin-bottom: 5px;
+                                }
+                                .container {
+                                    max-width: 600px;
+                                    margin: 0 auto;
+                                    padding: 20px;
+                                    background-color: #fff;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                }
+                                .signature {
+                                    margin-top: 30px;
+                                }
+                                .signature p {
+                                    margin-bottom: 0;
+                                }
+                                .website-link {
+                                    color: #3e75f7;
+                                    text-decoration: none;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class='container'>
+                                <h1>Thank you for contacting us!</h1>
+                                <p>We appreciate your message and will get back to you as soon as possible.</p>
+                                <p>Here are the details you provided:</p>
+                                <ul>
+                                    <li><strong>Name:</strong> $name</li>
+                                    <li><strong>Email:</strong> $email</li>
+                                    <li><strong>Message:</strong> $message</li>
+                                </ul>
+                                <p>Thank you again for reaching out to us. We look forward to assisting you.</p>
+                                <div class='signature'>
+                                    <p>WebBlend Global Solutions</p>
+                                    <p>Visit our website: <a href='https://www.webblendsolutions.com' class='website-link'>www.webblendsolutions.com</a></p>
+                                </div>
+                            </div>
+                        </body>
+                    </html>
+                ";
+  if ($mail->send()) {
+    $mail = new PHPMailer(true);
+
+    $mail->SMTPDebug = 0;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'webblendsolutions@gmail.com';
+    $mail->Password = 'euyscjbkznlnytos';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+
+    $mail->setFrom($email, $name);
+    $mail->addAddress('webblendsolutions@gmail.com', 'WebBlend Global Solutions');
+    $mail->addCustomHeader('X-Priority', '1');
+    $mail->addCustomHeader('Importance', 'High');
+    $mail->isHTML(true);
+    $mail->Subject = 'New Contact Form Submission';
+    $mail->Body = "
+                    <html>
+                        <head>
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    font-size: 16px;
+                                    line-height: 1.5;
+                                    color: #333;
+                                    background-color: #f7f7f7;
+                                }
+                                h1 {
+                                    font-size: 24px;
+                                    color: #444;
+                                    margin-bottom: 20px;
+                                }
+                                p {
+                                    margin-bottom: 15px;
+                                }
+                                ul {
+                                    list-style-type: none;
+                                    padding: 0;
+                                    margin-bottom: 15px;
+                                }
+                                li {
+                                    margin-bottom: 5px;
+                                }
+                                .container {
+                                    max-width: 600px;
+                                    margin: 0 auto;
+                                    padding: 20px;
+                                    background-color: #fff;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                }
+                                .signature {
+                                    margin-top: 30px;
+                                }
+                                .signature p {
+                                    margin-bottom: 0;
+                                }
+                                .website-link {
+                                    color: #3e75f7;
+                                    text-decoration: none;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class='container'>
+                                <h1>New Contact Form Submission</h1>
+                                <p>A new contact form submission has been received. Here are the details:</p>
+                                <ul>
+                                    <li><strong>Name:</strong> $name</li>
+                                    <li><strong>Email:</strong> $email</li>
+                                    <li><strong>Message:</strong> $message</li>
+                                </ul>
+                                <p>Please respond to the inquiry as soon as possible.</p>
+                                <div class='signature'>
+                                    <p>WebBlend Global Solutions</p>
+                                    <p>Visit our website: <a href='https://www.webblendsolutions.com' class='website-link'>www.webblendsolutions.com</a></p>
+                                </div>
+                            </div>
+                        </body>
+                    </html>
+                ";
+    if ($mail->send()) {
+      $successMessage = "Email sent successfully! We will get back to you soon.";
+    } else {
+      $errorMessage = "Error sending email: " . $mail->ErrorInfo;
+    }
+    if (isset($successMessage)) {
+      echo '<p style="text-align: center; background-color: #0652E9; color: white; padding: 10px; margin: 0;">' . $successMessage . '</p>';
+    } elseif (isset($errorMessage)) {
+      echo '<p style="text-align: center; background-color: #0652E9; color: white; padding: 10px; margin: 0;">' . $errorMessage . '</p>';
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title> WebBlend Studios</title>
+  <title> WebBlend Global Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <meta property="twitter:card" content="summary_large_image" />
@@ -99,8 +289,6 @@
     html {
       scroll-behavior: smooth
     }
-
-    /* contact */
   </style>
   <style data-tag="default-style-sheet">
     html {
@@ -120,47 +308,16 @@
 
     }
   </style>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-    data-tag="font" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    data-tag="font" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" data-tag="font" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
 
   <div>
-
     <script type="text/javascript" src="https://unpkg.com/dangerous-html/dist/default/lib.umd.js"></script>
     <link href="./home.css" rel="stylesheet" />
-
-    <div class="banner">
-      <p class="banner-offer"><b>Grand Opening Promo: </b>Get 30% off your first order!</p>
-    </div>
-    <style>
-      .banner {
-        background-color: #3e75f7;
-        color: white;
-        padding: 10px;
-        text-align: center;
-      }
-
-      .banner-text {
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .banner-offer {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-s
-      .banner-button:hover {
-        background-color: #f5f5f5;
-      }
-    </style>
 
     <div class="home-container">
 
@@ -174,8 +331,8 @@ s
             <span class="nav-link"><a href="#contact">Contact</a></span>
           </div>
           <div class="get-started navbar-get-started">
-            <span class="navbar-text"><a href="https://calendly.com/webblendstudios/consultation" target="_blank">Get
-                started</a></span>
+            <a href="https://calendly.com/webblendsolutions/consultation" target="_blank"><span class="navbar-text">Get
+                started</span></a>
           </div>
           <div id="open-mobile-menu" class="navbar-hamburger get-started">
             <img alt="image" src="public/Icons/hamburger-200h.png" class="navbar-image" />
@@ -183,11 +340,10 @@ s
         </div>
         <div id="mobile-menu" class="navbar-mobile-menu">
           <div class="navbar-branding">
-            <img alt="image" src="public/Branding/1-1500h.png" class="navbar-image1" />
+            <img alt="image" src="public/Branding/logo.png" class="navbar-image1" />
             <div id="close-mobile-menu" class="navbar-container">
               <svg viewBox="0 0 1024 1024" class="navbar-icon">
-                <path
-                  d="M225.835 286.165l225.835 225.835-225.835 225.835c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.835-225.835 225.835 225.835c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331l-225.835-225.835 225.835-225.835c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.835 225.835-225.835-225.835c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z">
+                <path d="M225.835 286.165l225.835 225.835-225.835 225.835c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.835-225.835 225.835 225.835c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331l-225.835-225.835 225.835-225.835c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.835 225.835-225.835-225.835c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z">
                 </path>
               </svg>
             </div>
@@ -199,9 +355,10 @@ s
             <span class="nav-link"><a href="#contact">Contact</a></span>
           </div>
           <div class="get-started">
-            <span class="navbar-text1"><a href="https://calendly.com/webblendstudios/consultation" target="_blank">Get
-                started</a></span>
+            <a href="https://calendly.com/webblendsolutions/consultation" target="_blank"><span class="navbar-text1">Get
+                started</span></a>
           </div>
+
         </div>
         <div>
           <dangerous-html html="<script>
@@ -250,23 +407,23 @@ listenForUrlChangesMobileMenu()
 </script>"></dangerous-html>
         </div>
       </nav>
+
       <section class="home-section">
         <div class="home-hero">
           <div class="home-content">
             <main class="home-main">
               <header class="home-header">
                 <h1 class="home-heading">
-                  Unlock Your Digital Potential with WebBlend Studios
+                  Unlock Your Digital Potential with WebBlend
                 </h1>
                 <span class="home-caption">
-                  Affordable, feature-rich websites. We provide static website options, seamless CMS integration, and
+                  Affordable, feature-rich websites. We provide static & informative website options, seamless CMS integration, and
                   powerful e-commerce functionality.
                 </span>
               </header>
               <div class="home-buttons">
                 <div class="home-get-started button">
-                  <span class="home-text"><a href="https://calendly.com/webblendstudios/consultation"
-                      target="_blank">Book a Demo</a></span>
+                  <a href="https://calendly.com/webblendsolutions/consultation" target="_blank"><span class="home-text">Book a Demo</span></a>
                 </div>
                 <div class="home-get-started1 button">
                   <span class="home-text01"><a href="#pricing">View Pricing</a></span>
@@ -275,15 +432,9 @@ listenForUrlChangesMobileMenu()
             </main>
             <div class="home-highlight">
               <div class="home-avatars">
-                <img alt="image"
-                  src="https://images.unsplash.com/photo-1552234994-66ba234fd567?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fHBvdHJhaXR8ZW58MHx8fHwxNjY3MjQ0ODcx&amp;ixlib=rb-4.0.3&amp;w=200"
-                  class="home-image avatar" />
-                <img alt="image"
-                  src="https://images.unsplash.com/photo-1610276198568-eb6d0ff53e48?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHBvdHJhaXR8ZW58MHx8fHwxNjY3MjQ0ODcx&amp;ixlib=rb-4.0.3&amp;w=200"
-                  class="home-image01 avatar" />
-                <img alt="image"
-                  src="https://images.unsplash.com/photo-1618151313441-bc79b11e5090?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEzfHxwb3RyYWl0fGVufDB8fHx8MTY2NzI0NDg3MQ&amp;ixlib=rb-4.0.3&amp;w=200"
-                  class="home-image02 avatar" />
+                <img alt="image" src="https://images.unsplash.com/photo-1552234994-66ba234fd567?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fHBvdHJhaXR8ZW58MHx8fHwxNjY3MjQ0ODcx&amp;ixlib=rb-4.0.3&amp;w=200" class="home-image avatar" />
+                <img alt="image" src="https://images.unsplash.com/photo-1610276198568-eb6d0ff53e48?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fHBvdHJhaXR8ZW58MHx8fHwxNjY3MjQ0ODcx&amp;ixlib=rb-4.0.3&amp;w=200" class="home-image01 avatar" />
+                <img alt="image" src="https://images.unsplash.com/photo-1618151313441-bc79b11e5090?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEzfHxwb3RyYWl0fGVufDB8fHx8MTY2NzI0NDg3MQ&amp;ixlib=rb-4.0.3&amp;w=200" class="home-image02 avatar" />
               </div>
               <label class="home-caption1">
                 Loved by 1,000+ people like you.
@@ -298,6 +449,7 @@ listenForUrlChangesMobileMenu()
           </div>
         </div>
       </section>
+
       <section class="home-section01" id="why">
         <!-- <h2 class="home-text02">
           Our web developers are here, 24/7.
@@ -320,14 +472,15 @@ listenForUrlChangesMobileMenu()
           <div class="home-content1">
             <main class="home-main1">
               <h2 class="home-heading01">
-                Why Choose WebBlend Studios?
+                Why Choose WebBlend Global Solutions?
               </h2>
               <p class="home-paragraph">
                 <span>
-                  At WebBlend Studios, we stand out for our expertise, dedication to excellence, and exceptional
+                  At WebBlend Global Solutions, we stand out for our expertise, dedication to excellence, and
+                  exceptional
                   results. Choose us for cutting-edge, tailored web solutions at affordable prices. With seamless CMS
                   integration and powerful e-commerce functionality, we help unlock your digital potential. Experience
-                  excellence with WebBlend Studios.
+                  excellence with WebBlend Global Solutions.
                 </span>
                 <!-- <br />
                 <br />
@@ -339,8 +492,10 @@ listenForUrlChangesMobileMenu()
               </p>
             </main>
             <div class="home-explore-more">
-              <p class="home-text14"><a href="https://www.facebook.com/webblendstudios" target="_blank">Visit our Page
-                  -&gt;</a></p>
+              <a href="https://www.facebook.com/webblendsolutions" target="_blank">
+                <p class="home-text14">Visit our Page
+                  -&gt;</p>
+              </a>
             </div>
           </div>
           <div class="home-image07">
@@ -352,8 +507,7 @@ listenForUrlChangesMobileMenu()
         <header class="home-header01">
           <h2 class="home-text15">Why Do You Need a Website?</h2>
           <span class="home-text16">
-            A website is a must-have in the digital age. It establishes your online presence, builds credibility,
-            expands reach, and serves as a marketing tool. Invest in a website to unlock digital potential.
+            With a professionally designed website, you can showcase your products or services, engage with customers, and create a seamless user experience. Stay ahead of the competition and tap into the endless possibilities of the digital world by investing in a website that empowers your business growth and drives success.
           </span>
         </header>
         <!-- <section class="home-note1">
@@ -384,7 +538,7 @@ listenForUrlChangesMobileMenu()
         </section> -->
         <section class="home-note2" id="features">
           <div class="home-image11">
-            <img alt="image" src="public/SectionImages/group%201449-1200w.png" width="600px" class="home-image12" />
+            <img alt="image" src="public/SectionImages/group%201449-1200w.png" width="550px" class="home-image12" />
           </div>
           <div class="home-content3">
             <main class="home-main3">
@@ -399,7 +553,8 @@ listenForUrlChangesMobileMenu()
                     Accelerate Your Digital Growth with Our Expert Web Development Solutions
                   </h2>
                   <p class="section-description">
-                    When you choose WebBlend Studios, you're choosing a team of experienced professionals who are
+                    When you choose WebBlend Global Solutions, you're choosing a team of experienced professionals who
+                    are
                     committed to delivering exceptional websites tailored to your unique needs.
                   </p>
                 </header>
@@ -411,7 +566,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>One Time Payment</span>
+                      <span>One Time Payment & No Monthly Fees!</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -421,7 +576,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>No Monthly Fee</span>
+                      <span>Lowest Renewal Price in the Market</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -431,7 +586,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>FREE Basic SEO Optimization & Guide</span>
+                      <span>FREE Domain & Hosting with SSL Certificate (1 year)</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -441,7 +596,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>FREE Facebook / Instagram Marketing Tutorial</span>
+                      <span>FREE Business Email Account via Webmail</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -451,7 +606,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>FREE Domain & Hosting (1 year)</span>
+                      <span>FREE Basic SEO Optimization</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -461,7 +616,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>FREE Graphic Design Service</span>
+                      <span>FREE Social Media Marketing Guide</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -471,7 +626,7 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>FREE 100pcs Business Calling Card</span>
+                      <span>FREE Monthly Maintenance</span>
                     </p>
                   </div>
                   <div class="mark-mark">
@@ -481,30 +636,9 @@ listenForUrlChangesMobileMenu()
                       </svg>
                     </div>
                     <p class="mark-label">
-                      <span>Premium & Responsive Design</span>
+                      <span>Premium & Responsive Design, and more!</span>
                     </p>
                   </div>
-                  <div class="mark-mark">
-                    <div class="mark-icon">
-                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
-                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
-                      </svg>
-                    </div>
-                    <p class="mark-label">
-                      <span>Tailored To Your Brand</span>
-                    </p>
-                  </div>
-                  <div class="mark-mark">
-                    <div class="mark-icon">
-                      <svg viewBox="0 0 1024 1024" class="mark-icon1">
-                        <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
-                      </svg>
-                    </div>
-                    <p class="mark-label">
-                      <span>Lowest Renewal Fee</span>
-                    </p>
-                  </div>
-                </div>
               </main>
             </main>
           </div>
@@ -659,7 +793,7 @@ listenForUrlChangesMobileMenu()
           </div>
           <div class="home-buttons1">
             <div class="home-get-started4 button">
-              <span class="home-text22"><a href="https://calendly.com/webblendstudios/consultation" target="_blank">Book
+              <span class="home-text22"><a href="https://calendly.com/webblendsolutions/consultation" target="_blank">Book
                   a Demo</a></span>
             </div>
           </div>
@@ -700,16 +834,30 @@ listenForUrlChangesMobileMenu()
                   <div class="home-header07">
                     <label class="home-name">Static Website</label>
                     <div class="home-pricing1">
-                      <h1 class="home-price">₱ 10,000</h1>
-
+                      <h1 class="home-price">₱ 7,999</h1>
                     </div>
+                    <span class="home-duration">Before: ₱ 10,000</span>
                   </div>
                   <p class="home-description1">
-                    Create a captivating online presence with our Static Website package. Delivering a fully
-                    functional
-                    website with a stunning design, easy navigation, and responsive layout. Perfect for showcasing
-                    your
-                    business or personal portfolio.
+                    Create a simple and elegant online presence with a one-page website. Our team will work closely with
+                    you to deliver a visually appealing and informative website that showcases your brand effectively.
+                    Estimated timeline for completion is 1-2 months.
+                  </p>
+                </div>
+              </div>
+              <div class="home-plan">
+                <div class="home-details">
+                  <div class="home-header07">
+                    <label class="home-name">Informative Website</label>
+                    <div class="home-pricing1">
+                      <h1 class="home-price">₱ 11,999</h1>
+                    </div>
+                    <span class="home-duration">Before: ₱ 15,000</span>
+                  </div>
+                  <p class="home-description1">
+                    Take your online presence to the next level with a comprehensive seven-page website. Our experienced
+                    team will craft a professional website that highlights your products, services, and company
+                    information. Expect a timeline of 2-3 months for completion.
                   </p>
                 </div>
               </div>
@@ -718,12 +866,14 @@ listenForUrlChangesMobileMenu()
                   <div class="home-header08">
                     <label class="home-name1">Dynamic Website</label>
                     <div class="home-pricing2">
-                      <h1 class="home-price">₱ 20,000</h1>
+                      <h1 class="home-price">₱ 15,999</h1>
                     </div>
+                    <span class="home-duration">Before: ₱ 20,000</span>
                   </div>
                   <p class="home-description2">
-                    Effortlessly manage and update your website with our CMS/Dynamic Website package. Enjoy real-time
-                    content changes and seamless control over your online presence.
+                    Experience the power of a dynamic website that allows for unlimited pages and seamless content
+                    management. Our team will develop a customized website tailored to your specific needs, ensuring
+                    flexibility and scalability. The estimated timeline for completion is 3-6 months.
                   </p>
                 </div>
                 <div class="home-buy-details1">
@@ -738,14 +888,16 @@ listenForUrlChangesMobileMenu()
               <div class="home-plan2">
                 <div class="home-details2">
                   <div class="home-header09">
-                    <label class="home-name2">Business Website</label>
+                    <label class="home-name2">E-commerce Website</label>
                     <div class="home-pricing3">
-                      <h1 class="home-price">₱ 30,000</h1>
+                      <h1 class="home-price">₱ 39,999</h1>
                     </div>
+                    <span class="home-duration">Before: ₱ 50,000</span>
                   </div>
                   <p class="home-description3">
-                    Seamlessly manage products, customers, and transactions with our comprehensive Business Website
-                    package. Boost your sales and take your online business to new heights.
+                    Establish your online store and tap into the growing world of e-commerce. Our team will create a
+                    robust platform that enables secure transactions, product showcasing, and inventory management.
+                    Expect a timeline of 6-9 months for the completion of your fully functional e-commerce website.
                   </p>
                 </div>
                 <div class="home-buy-details2">
@@ -766,7 +918,7 @@ listenForUrlChangesMobileMenu()
             <br />
           </span>
           <div class="home-contact-support">
-            <p class="home-text38"><a href="mailto:webblendstudios@gmail.com">Contact support -&gt;</a></p>
+            <p class="home-text38"><a href="mailto:webblendsolutions@gmail.com">Contact support -&gt;</a></p>
           </div>
         </div>
       </section>
@@ -780,7 +932,7 @@ listenForUrlChangesMobileMenu()
           </header>
           <div class="home-right2">
             <p class="home-paragraph5 section-description">
-              Hear from our satisfied clients about their experience working with us
+              Gain insights from our esteemed clients as they share their gratifying experiences collaborating with our team.
             </p>
           </div>
         </header>
@@ -803,7 +955,8 @@ listenForUrlChangesMobileMenu()
               <main class="review-content">
                 <p class="review-quote">
                   <span>
-                    “Working with WebBlend Studios was an absolute pleasure. Their team's professionalism, attention to
+                    “Working with WebBlend Global Solutions was an absolute pleasure. Their team's professionalism,
+                    attention to
                     detail, and expertise in web development exceeded our expectations. They delivered a stunning
                     website that perfectly represents our brand. Highly recommended!”
                   </span>
@@ -827,7 +980,8 @@ listenForUrlChangesMobileMenu()
               <main class="review-content">
                 <p class="review-quote">
                   <span>
-                    “I couldn't be happier with the results achieved by WebBlend Studios. They listened to our needs,
+                    “I couldn't be happier with the results achieved by WebBlend Global Solutions. They listened to our
+                    needs,
                     understood our vision, and created a website that truly captures the essence of our business. The
                     level of communication and support throughout the process was exceptional. Thank you!”
                   </span>
@@ -853,7 +1007,8 @@ listenForUrlChangesMobileMenu()
               <main class="review-content">
                 <p class="review-quote">
                   <span>
-                    “WebBlend Studios transformed our online presence with their top-notch web development services.
+                    “WebBlend Global Solutions transformed our online presence with their top-notch web development
+                    services.
                     Their team's creativity and technical skills brought our website to life, making it user-friendly
                     and visually appealing. We're thrilled with the outcome and the positive impact it has had on our
                     business.”
@@ -878,7 +1033,8 @@ listenForUrlChangesMobileMenu()
               <main class="review-content">
                 <p class="review-quote">
                   <span>
-                    “Choosing WebBlend Studios for our website development was the best decision we made. Their team's
+                    “Choosing WebBlend Global Solutions for our website development was the best decision we made. Their
+                    team's
                     professionalism, expertise, and attention to detail were evident throughout the entire process. The
                     website they created for us not only looks stunning but also functions seamlessly. We highly
                     recommend their services!”
@@ -968,10 +1124,11 @@ listenForUrlChangesMobileMenu()
             <div data-role="accordion-container" class="faq-element accordion-element">
               <div class="faq-details">
                 <span class="faq-text">
-                  Can WebBlend Studios create custom website designs?
+                  Can WebBlend Global Solutions create custom website designs?
                 </span>
                 <span data-role="accordion-content" class="faq-text01">
-                  Yes, WebBlend Studios specializes in creating custom website designs that are tailored to meet the
+                  Yes, WebBlend Global Solutions specializes in creating custom website designs that are tailored to
+                  meet the
                   unique needs and branding of each client. We work closely with our clients to ensure their vision is
                   brought to life.
                 </span>
@@ -985,7 +1142,7 @@ listenForUrlChangesMobileMenu()
             <div data-role="accordion-container" class="faq-element1 accordion-element">
               <div class="faq-details1">
                 <span class="faq-text02">
-                  How long does it take to complete a website project with WebBlend Studios?
+                  How long does it take to complete a website project with WebBlend Global Solutions?
                 </span>
                 <span data-role="accordion-content" class="faq-text03">
                   The timeline for a website project can vary depending on the complexity and requirements of the
@@ -1003,10 +1160,11 @@ listenForUrlChangesMobileMenu()
             <div data-role="accordion-container" class="faq-element5 accordion-element">
               <div class="faq-details5">
                 <span class="faq-text10">
-                  How can I contact WebBlend Studios for more information or to get started on a project?
+                  How can I contact WebBlend Global Solutions for more information or to get started on a project?
                 </span>
                 <span data-role="accordion-content" class="faq-text11">
-                  You can contact WebBlend Studios by visiting our website at www.webblendstudios.com or by calling our
+                  You can contact WebBlend Global Solutions by visiting our website at www.webblendsolutions.com or by
+                  calling our
                   dedicated customer support line at +63 970 736 2596. Our team will be happy to assist you with any
                   inquiries or discuss your project requirements.
                 </span>
@@ -1052,8 +1210,7 @@ listenForUrlChangesMobileMenu()
                   </span>
                 </div>
                 <div class="home-socials">
-                  <a href="https://facebook.com/webblendstudios" target="_blank" rel="noreferrer noopener"
-                    class="home-link">
+                  <a href="https://facebook.com/webblendsolutions" target="_blank" rel="noreferrer noopener" class="home-link">
                     <img alt="image" src="public/Icons/facebook-200h.png" class="social" />
                   </a>
                   <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="home-link1">
@@ -1082,7 +1239,7 @@ listenForUrlChangesMobileMenu()
             </div>
             <section class="home-copyright">
               <span class="home-text56">
-                © 2023 WebBlend Studios. All Rights Reserved.
+                © 2023 WebBlend Global Solutions. All Rights Reserved.
               </span>
             </section>
           </main>
@@ -1090,23 +1247,26 @@ listenForUrlChangesMobileMenu()
             <main class="home-contact">
               <h1 class="home-heading18">Contact Us</h1>
               <br>
-              <div class="home-box">
-                <input type="text" placeholder="Name" class="home-textinput input" id="name" />
-              </div>
-              <div class="home-box">
-                <input type="email" placeholder="Email" class="home-textinput input" id="email" />
-              </div>
-              <div class="home-box">
-                <textarea placeholder="Message" class="home-textinput input textarea" id="message"></textarea>
-              </div>
+              <form method="POST">
+                <div class="home-box">
+                  <input type="text" placeholder="Name" class="home-textinput input" id="name" name="name" />
+                </div>
+                <div class="home-box">
+                  <input type="email" placeholder="Email" class="home-textinput input" id="email" name="email" />
+                </div>
+                <div class="home-box">
+                  <textarea placeholder="Message" class="home-textinput input textarea" id="message" name="message"></textarea>
+                </div>
 
-              <div class="home-box">
-                <button class="home-buy3 send-button" onclick="sendForm()">Send</button>
-              </div>
+                <div class="home-box">
+                  <button class="home-buy3 send-button" id="submit" name="submit">Send</button>
+                </div>
+              </form>
               <p class="home-notice">
                 By contacting us, you agree to our Privacy Policy.
               </p>
             </main>
+
           </section>
           <style>
             .home-box input {
@@ -1149,7 +1309,7 @@ listenForUrlChangesMobileMenu()
           </style>
           <section class="home-copyright1">
             <span class="home-text61">
-              © 2022 latitude. All Rights Reserved.
+              © 2022 WebBlend Global Solutions. All Rights Reserved.
             </span>
           </section>
         </div>
@@ -1228,6 +1388,161 @@ Here's what the above is doing:
       </div>
     </div>
   </div>
+  <!-- Modal -->
+  <div id="promoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Grand Opening Promo!</h2><br>
+      <p>Get your 20% discount on static, informative, dynamic, and e-commerce (business) websites!</p>
+      <p>Hurry, limited time offer.</p><br>
+      <a href="https://calendly.com/webblendsolutions/consultation" target="_blank"><button class="consultation-button">Book a Free Consultation</button></a>
+    </div>
+  </div>
+
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #555;
+    }
+
+    h2 {
+      font-size: 30px;
+      color: #333;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .promo-details {
+      margin-top: 20px;
+    }
+
+    .promo-details p {
+      font-weight: bold;
+    }
+
+    .promo-details ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+
+    .promo-details li {
+      margin-bottom: 5px;
+    }
+
+    .consultation-button {
+      background-color: #3e75f7;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .consultation-button:hover {
+      background-color: #2657c0;
+    }
+  </style>
+  <script>
+    // Check if the modal has already been displayed in the current session
+    if (!localStorage.getItem("modalDisplayed")) {
+      // Open the modal
+      window.onload = function() {
+        var modal = document.getElementById("promoModal");
+        modal.style.display = "block";
+      };
+
+      // Close the modal when the close button is clicked
+      var closeBtn = document.getElementsByClassName("close")[0];
+      closeBtn.onclick = function() {
+        var modal = document.getElementById("promoModal");
+        modal.style.display = "none";
+        // Set the flag in localStorage to indicate that the modal has been displayed
+        localStorage.setItem("modalDisplayed", true);
+      };
+
+      // Close the modal when the user clicks outside the modal
+      window.onclick = function(event) {
+        var modal = document.getElementById("promoModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+          // Set the flag in localStorage to indicate that the modal has been displayed
+          localStorage.setItem("modalDisplayed", true);
+        }
+      };
+    }
+  </script>
+  <!-- Messenger Chat Plugin Code -->
+  <div id="fb-root"></div>
+
+  <!-- Your Chat Plugin code -->
+  <div id="fb-customer-chat" class="fb-customerchat">
+  </div>
+
+  <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "101302776354916");
+    chatbox.setAttribute("attribution", "biz_inbox");
+  </script>
+
+  <!-- Your SDK code -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml: true,
+        version: 'v17.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 </body>
 
 </html>
